@@ -56,7 +56,7 @@ api.getLocationInfo = async function(location) {
         const {data:response} = await axios.get(`https://trefle.io/api/v1/distributions/${location}/plants?token=${process.env.TREFLE_API_TOKEN}`)
         const data = response.data
         var info = []
-        var x =10;
+        var x =10000;
         for (var i=0; i<x; i++) {
             if (i>0 && i<data.length && data[i].id != data[i-1].id){
             info.push({
