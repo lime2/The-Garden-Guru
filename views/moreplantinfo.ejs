@@ -129,6 +129,7 @@ p {
               <li><a href="/authors.html">Authors</a></li>
             </ul>
           </nav>
+          <div style="margin:20px">
         <h1><%=plantName%></h1>
         <img height=200 src="<%=imageUrl%>">
         <p>Scientific Name: <%=scientificName%></p>
@@ -192,5 +193,6 @@ p {
         <% if (careInfo.soil_nutriments) { %>
             <p>Nutrient Requirements: <%=careInfo.soil_nutriments%>/10</p>
         <% } %>
+        </div>
     </body>
 </html>
