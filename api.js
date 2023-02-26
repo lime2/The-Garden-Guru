@@ -58,7 +58,7 @@ api.getLocationInfo = async function(location) {
         var info = []
         var x =10;
         for (var i=0; i<x; i++) {
-            if (i>0 && data[i].id != data[i-1].id){
+            if (i>0 && i<data.length && data[i].id != data[i-1].id){
             info.push({
                 ['id']: data[i].id,
                 ['plantName']: data[i].common_name,
@@ -66,11 +66,10 @@ api.getLocationInfo = async function(location) {
                 ['image_url']: data[i].image_url,
                 ['family']: data[i].family
             })
-        }else{
+        } else if (data[i] && i < data.length) {
             x++;
         }
         }
-        console.log(info)
         return info
     } catch (err) {
         console.log(err)
