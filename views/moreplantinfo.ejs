@@ -1,0 +1,196 @@
+<html>
+    <head>
+        <style>
+            nav {
+  z-index: 20;
+background-color: #834e4e;
+  color: #fff;
+  display: block;
+  justify-content: space-between;
+  padding:10px; 
+}
+
+html {
+  overflow-x:hidden;
+  padding: 0px;
+  margin: 0px;
+  background-color:#ebffeb;
+}
+
+body {
+  margin: 0px;
+}
+.le{
+    background-size:cover;
+  width: 95%;  
+  margin-left: 2.5%;
+  height: 500px;
+opacity:0.95;
+  text-align: center;
+  -webkit-text-stroke-color: #0d0c0d;
+  -webkit-text-stroke-width: 0.25px;
+  color: #0232f2;
+  font-size:40px;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  color: #fff;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+nav ul li:hover > ul {
+  display: block;
+}
+
+nav ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  padding: 0;
+}
+
+nav ul ul li {
+  width: 200px;
+}
+
+nav ul ul li a {
+  padding: 10px;
+}
+
+.sidebar {
+  background-color: #555;
+  color: #fff;
+  float: right;
+  height: 100vh;
+  width: 120px;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.main-content {
+  margin-right: 0px;
+  padding: 0px;
+  
+}
+
+h1 {
+  color: #d2df26;
+  font-size: 72px;
+  stroke-width: 1000px;
+  stroke: white;
+  
+}
+
+p {
+  color: #333;
+  font-size: 16px;
+}
+
+
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about.html">About</a></li>
+              <li><a>Features</a>
+                <ul>
+                  <li><a href="/nameId.html">Identify plants by name</a></li>
+                        <li><a href="/regionId.html">Find plants for region</a></li>
+                </ul>
+              </li>
+              <li><a href="/authors.html">Authors</a></li>
+            </ul>
+          </nav>
+        <h1><%=plantName%></h1>
+        <img height=200 src="<%=imageUrl%>">
+        <p>Scientific Name: <%=scientificName%></p>
+        <% if (commonFamily) { %>
+            <p>Common Family: <%=commonFamily%></p>
+        <% } %>
+        <p>Specific Family: <%=family%></p>
+        <% if (edible) {%>
+            <% if (ediblePart) { %>
+                <p>This plant can be eaten, the edible part is the <%=ediblePart%>.</p>
+            <% } else { %>
+                <p>This plant can be eaten whole.</p>
+            <% } %>
+        <% } else { %>
+            <p>This plant can not be eaten.</p>
+        <% } %>
+        <% if (native) { %>
+            <p>Native Locations:</p>
+            <ul>
+                <% for (var i=0; i < native.length; i++) { %>
+                    <li><a href="/GetLocationInfo/<%=native[i].id%>/<%=native[i].name%>"><%=native[i].name%></a></li>
+                <% } %>
+            </ul>
+        <% } %>
+        <% if (introduced) { %>
+            <p>Introducted Locations:</p>
+            <ul>
+                <% for (var i=0; i < introduced.length; i++) { %>
+                    <li><a href="/GetLocationInfo/<%=introduced[i].id%>/<%=introduced[i].name%>"><%=introduced[i].name%></a></li>
+                <% } %>
+            </ul>
+        <% } %>
+        <h3>Care info:</h3>
+        <% if (careInfo.description) { %>
+            <p>Description: <%=careInfo.description%></p>
+        <% } %>
+        <% if (careInfo.light) { %>
+            <p>Light: <%=careInfo.light%> Hours</p>
+        <% } %>
+        <% if (careInfo.sowing) { %>
+            <p>Sowing: <%=careInfo.sowing%></p>
+        <% } %>
+        <% if (careInfo.ph_minimum) { %>
+            <p>Ph: between <%=careInfo.ph_minimum%> and <%=careInfo.ph_maximum%></p>
+        <% } %>
+        <% if (careInfo.days_to_harvest) { %>
+            <p>Harvesting Days: <%=careInfo.days_to_havest%></p>
+        <% } %>
+        <% if (careInfo.row_spacing && careInfo.row_spacing.cm) { %>
+            <p>Light: <%=careInfo.row_spacing.cm%> cm</p>
+        <% } %>
+        <% if (careInfo.growth_months) { %>
+            <p>Growth Months: <%=careInfo.growth_months%></p>
+        <% } %>
+        <% if (careInfo.bloom_months) { %>
+            <p>Bloom Months: <%=careInfo.bloom_months%></p>
+        <% } %>
+        <% if (careInfo.fruit_months) { %>
+            <p>Fruit Months: <%=careInfo.fruit_months%></p>
+        <% } %>
+        <% if (careInfo.soil_nutriments) { %>
+            <p>Nutrient Requirements: <%=careInfo.soil_nutriments%>/10</p>
+        <% } %>
+    </body>
+</html>

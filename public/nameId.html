@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <script>
+            function getPlantsByName() {
+                var name = document.getElementById('plantName').value
+                var url = `/GetPlantInfo/${name}`
+                
+                window.location.href = url
+            }
+        </script>
+        <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a>Features</a>
+                <ul>
+                  <li><a href="nameld.html">Identify plants by name</a></li>
+                        <li><a href="regionID.html">Find plants for region</a></li>
+                </ul>
+              </li>
+              <li><a href="authors.html">Authors</a></li>
+            </ul>
+          </nav>
+        <h1>Identify a plant by name</h1>
+        <input type="text" id="plantName" placeholder="Plant Name">
+        <button onclick=getPlantsByName()>Go</button>
+
+        
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+    <body>
+        <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about.html">About</a></li>
+              <li><a>Features</a>
+                <ul>
+                  <li><a href="/nameId.html">Identify plants by name</a></li>
+                        <li><a href="/regionId.html">Find plants for region</a></li>
+                </ul>
+              </li>
+              <li><a href="/authors.html">Authors</a></li>
+            </ul>
+          </nav>
+        <script>
+            function getPlantsByName() {
+                var name = document.getElementById('locationName').value
+                var url = `/GetLocationInfo/${name}/your region`
+                
+                window.location.href = url
+            }
+        </script>
+        <h1>Identify a plant by region</h1>
+        <input type="text" id="locationName" placeholder="Location Name">
+        <button onclick=getPlantsByName()>Go</button>
+    </body>
+</html>
